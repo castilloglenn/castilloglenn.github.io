@@ -115,7 +115,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  background-image: url(/assets/img/repeating.png);
+  background-image: url(/assets/img/repeating.webp);
   background-attachment: fixed;
 }
 
@@ -10990,7 +10990,7 @@ html {
 }
 
 .masthead {
-  background-image: url(/assets/img/cover.png);
+  background-image: url(/assets/img/cover.webp);
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
   background-position: top;
