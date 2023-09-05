@@ -3756,7 +3756,7 @@ textarea.form-control-lg {
   --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-padding-y: 0.3125rem;
   --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
+  --bs-navbar-brand-font-size: 1rem;
   --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-nav-link-padding-x: 0.5rem;
@@ -10949,7 +10949,7 @@ html {
     transition: padding-top 0.3s, padding-bottom 0.3s;
   }
   #mainNav .navbar-brand {
-    font-size: 1.75em;
+    font-size: 1em;
     transition: font-size 0.3s;
   }
   #mainNav .navbar-nav {
@@ -10968,7 +10968,7 @@ html {
     padding-bottom: 0.5rem;
   }
   #mainNav.navbar-shrink .navbar-brand {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }
 .form-floating input.form-control,
