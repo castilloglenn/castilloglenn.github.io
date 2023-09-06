@@ -16,3 +16,41 @@ for (var i = 0; i < elements.length; i++) {
         }
     });
 }
+
+// Function to check if more than 50% of an element is in the viewport
+function isElementMoreThan50PercentInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    var elementHeight = rect.bottom - rect.top;
+
+    return (
+        (rect.top >= 0 && rect.top <= windowHeight * 0.5) ||
+        (rect.bottom >= windowHeight * 0.5 && rect.bottom <= windowHeight) ||
+        (rect.top < 0 && rect.bottom > windowHeight)
+    );
+}
+
+// Get all section elements
+const sections = document.querySelectorAll('section');
+
+// Function to update the active section
+function updateActiveSection() {
+    for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const navLink = document.querySelector(`a[href="#${section.id}"]`);
+
+        if (isElementMoreThan50PercentInViewport(section)) {
+            // More than 50% of the section is in the viewport, add the "active" class to the nav link
+            navLink.classList.add('active');
+        } else {
+            // Less than 50% of the section is in the viewport, remove the "active" class from the nav link
+            navLink.classList.remove('active');
+        }
+    }
+}
+
+// Add an event listener for scrolling
+window.addEventListener('scroll', updateActiveSection);
+
+// Initial call to set the active section on page load
+updateActiveSection();
