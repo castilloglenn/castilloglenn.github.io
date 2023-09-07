@@ -4,10 +4,10 @@ var elements = document.getElementsByClassName('protected');
 for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
 
-    element.addEventListener('contextmenu', function (e) {
+    element.addEventListener('dragstart', function (e) {
         e.preventDefault();
     });
-    element.addEventListener('dragstart', function (e) {
+    element.addEventListener('contextmenu', function (e) {
         e.preventDefault();
     });
     element.addEventListener("keydown", function (e) {
@@ -54,3 +54,27 @@ window.addEventListener('scroll', updateActiveSection);
 
 // Initial call to set the active section on page load
 updateActiveSection();
+
+// Add a click event listener to the "Copy Email" button
+document.getElementById("copyButton").addEventListener("click", function () {
+    // Get the email text from the <p> element
+    var emailText = document.getElementById("public-email").innerText;
+
+    // Create a temporary <textarea> element
+    var tempTextarea = document.createElement("textarea");
+    tempTextarea.value = emailText;
+    document.body.appendChild(tempTextarea);
+
+    // Select the text in the temporary <textarea>
+    tempTextarea.select();
+    tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+
+    // Remove the temporary <textarea> element
+    document.body.removeChild(tempTextarea);
+
+    // Change the text of the button to "Copied!"
+    document.getElementById("copyButton").innerText = "Copied!";
+});
