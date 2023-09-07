@@ -30,30 +30,28 @@ function isElementMoreThan50PercentInViewport(el) {
     );
 }
 
-// Get all section elements
-const sections = document.querySelectorAll('section');
+// Specify the section names
+const sectionNames = ['about', 'background', 'portfolio', 'contact'];
 
-// Function to update the active section
-function updateActiveSection() {
-    for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        const navLink = document.querySelector(`a[href="#${section.id}"]`);
-
-        if (isElementMoreThan50PercentInViewport(section)) {
+// Function to update the active navigation link
+function updateActiveNavLink() {
+    sectionNames.forEach(sectionName => {
+        const navLink = document.querySelector(`a[href="#${sectionName}"]`);
+        
+        if (navLink && isElementMoreThan50PercentInViewport(document.getElementById(sectionName))) {
             // More than 50% of the section is in the viewport, add the "active" class to the nav link
             navLink.classList.add('active');
-        } else {
+        } else if (navLink) {
             // Less than 50% of the section is in the viewport, remove the "active" class from the nav link
             navLink.classList.remove('active');
         }
-    }
+    });
 }
 
-// Add an event listener for scrolling
-window.addEventListener('scroll', updateActiveSection);
+// Call the function initially and whenever the page is scrolled
+updateActiveNavLink();
+window.addEventListener('scroll', updateActiveNavLink);
 
-// Initial call to set the active section on page load
-updateActiveSection();
 
 // Add a click event listener to the "Copy Email" button
 document.getElementById("copyButton").addEventListener("click", function () {
