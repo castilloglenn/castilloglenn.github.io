@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZENGINEERING Teaser Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Raleway:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a class="brand-lockup" href="#top" aria-label="LR TECHS, Inc.">
+            <img src="assets/lr-techs-logo-navbar.png" alt="LR TECHS, Inc." />
+          </a>
+
+          <nav class="desktop-nav" aria-label="Primary navigation">
+            <a href="#introduction">Introduction</a>
+            <a href="#commitment">Commitment</a>
+            <a href="#service">Service</a>
+            <a href="#vision">Vision</a>
+            <a href="#company">Company</a>
+            <a href="#recruit">Recruit</a>
+            <a href="#access">Access</a>
+            <a class="is-active" href="#development">Offshore Development</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <details class="mobile-nav">
+            <summary aria-label="Open menu">
+              <span class="menu-icon"></span>
+            </summary>
+            <nav class="mobile-nav__menu" aria-label="Mobile navigation">
+              <a href="#introduction">Introduction</a>
+              <a href="#commitment">Commitment</a>
+              <a href="#service">Service</a>
+              <a href="#vision">Vision</a>
+              <a href="#company">Company</a>
+              <a href="#recruit">Recruit</a>
+              <a href="#access">Access</a>
+              <a href="#development">Offshore Development</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </details>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero-wrap" id="development">
+          <div class="hero">
+            <div class="hero__inner">
+              <div class="hero__content">
+                <div class="hero__logos" aria-label="Company brands">
+                  <img
+                    class="hero__logo--lr"
+                    src="assets/lr-techs-logo-and-name-white.png"
+                    alt="LR TECHS, Inc."
+                  />
+                  <span class="hero__divider" aria-hidden="true"></span>
+                  <img
+                    class="hero__logo--z"
+                    src="assets/zengeneering-logo.png"
+                    alt="ZENgineering Offshore Lab"
+                  />
+                </div>
+
+                <p class="hero__lead">
+                  海外IT人材と開発を伴走してきたLR TECHS<br />
+                  フィリピンのセブ マニラにオフショア開発ラボ<br />
+                  ZENGINEERINGをオープンします
+                </p>
+
+                <span class="hero__cta" aria-label="Launch timing"
+                  ><span class="hero__cta-text">2026年早夏</span></span
+                >
+              </div>
+            </div>
+          </div>
+          <img
+            class="hero__accent"
+            src="assets/zen.png"
+            alt="Decorative accent graphic"
+          />
+        </section>
+
+        <section class="contact-wrap" id="contact">
+          <div class="contact">
+            <div class="contact__copy">
+              <h2>お問い合わせ</h2>
+              <p>
+                デモのご相談、技術体制やご要望、サービスの詳細など、お気軽にお問い合わせください。
+                専門スタッフが迅速に対応いたします。
+              </p>
+            </div>
+
+            <form
+              class="contact-form"
+              action="https://submit-form.com/W8t2kRdpJ"
+              method="post"
+            >
+              <div class="website-field" aria-hidden="true">
+                <label for="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="contact-form__column">
+                <div class="field">
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    autocomplete="organization"
+                    placeholder=" "
+                    required
+                  />
+                  <label class="is-required" for="company">会社名</label>
+                </div>
+
+                <div class="field">
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder=" "
+                    required
+                  />
+                  <label class="is-required" for="name">名前</label>
+                </div>
+
+                <div class="field">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder=" "
+                    required
+                  />
+                  <label class="is-required" for="email">メールアドレス</label>
+                </div>
+
+                <div class="field">
+                  <input
+                    id="confirm-email"
+                    name="confirm-email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder=" "
+                    required
+                  />
+                  <label class="is-required" for="confirm-email"
+                    >メールアドレスを確認する</label
+                  >
+                </div>
+              </div>
+
+              <div class="contact-form__sidebar">
+                <div class="check-group">
+                  <div class="check-group__label is-required">ご相談内容</div>
+                  <div class="check-grid">
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="topics.company"
+                        value="オフショア開発について"
+                      />オフショア開発について</label
+                    >
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="topics.recruit"
+                        value="採用について"
+                      />採用について</label
+                    >
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="topics.demo"
+                        value="エンジニア採用サービスについて"
+                      />エンジニア採用サービスについて</label
+                    >
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="topics.other"
+                        value="その他"
+                      />その他</label
+                    >
+                  </div>
+                </div>
+
+                <div class="check-group check-group--split">
+                  <div class="check-group__label is-required">
+                    通信方法のご希望
+                  </div>
+                  <div class="check-grid">
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="contactMethod.email"
+                        value="メールでの返信を希望"
+                      />メールでの返信を希望</label
+                    >
+                    <label class="check-option"
+                      ><input
+                        type="checkbox"
+                        name="contactMethod.chat"
+                        value="ビデオチャットでの相談を希望"
+                      />ビデオチャットでの相談を希望</label
+                    >
+                  </div>
+                </div>
+
+                <div class="field field--message">
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder=" "
+                    required
+                  ></textarea>
+                  <label class="is-required" for="message"
+                    >お問い合わせ内容</label
+                  >
+                </div>
+              </div>
+
+              <div class="submit-row">
+                <button type="submit">
+                  <img src="assets/mail-icon.png" alt="" aria-hidden="true" />
+                  <span>お問い合わせ</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <div class="site-footer__band">
+            <div class="site-footer__brand">LR TECHS, Inc.</div>
+          </div>
+          <div class="site-footer__meta">
+            Copyright (c) LR TECHS, INC. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
