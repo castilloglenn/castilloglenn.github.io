@@ -91,7 +91,7 @@ textarea {
 }
 
 .brand-lockup img {
-    width: clamp(170px, 15vw, 240px);
+    width: clamp(150px, 13vw, 212px);
     height: auto;
     filter: drop-shadow(var(--overlay-drop-shadow));
 }
@@ -99,13 +99,13 @@ textarea {
 .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.8rem;
+    gap: 4px;
+    font-size: 0.75rem;
     letter-spacing: 0;
     text-transform: uppercase;
     color: #3f3f3f;
     font-family: "Raleway", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     white-space: nowrap;
 }
 
@@ -113,7 +113,7 @@ textarea {
     display: inline-flex;
     align-items: center;
     min-height: 30px;
-    margin: 0 6px;
+    margin: 0 4px;
     border-bottom: 1px solid transparent;
 }
 
@@ -219,7 +219,7 @@ textarea {
     inset: 0;
     background:
         url("assets/hero-bg-overlay.png") center center / auto 100% no-repeat,
-        url("assets/hero-bg.png") center center / auto 100% no-repeat;
+        url("assets/hero-bg.jpeg") center center / auto 100% no-repeat;
     opacity: 0.87;
     z-index: -2;
 }
@@ -238,7 +238,7 @@ textarea {
     .hero::before {
         background:
             url("assets/hero-bg-overlay.png") center center / cover no-repeat,
-            url("assets/hero-bg.png") center center / cover no-repeat;
+            url("assets/hero-bg.jpeg") center center / cover no-repeat;
     }
 }
 
@@ -743,7 +743,7 @@ textarea {
     }
 
     .brand-lockup img {
-        width: 150px;
+        width: 136px;
     }
 
     .hero-wrap {
