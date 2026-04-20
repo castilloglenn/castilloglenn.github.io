@@ -532,6 +532,7 @@ textarea {
 }
 
 .check-group--split {
+    align-content: start;
     padding-left: 16px;
     border-left: 1px solid rgba(40, 68, 126, 0.14);
 }
