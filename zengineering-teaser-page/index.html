@@ -10,46 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Raleway:wght@200;300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="shared/shared.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-root="." data-active-nav="development">
     <div class="page-shell">
-      <header class="site-header">
-        <div class="site-header__inner">
-          <a class="brand-lockup" href="#top" aria-label="LR TECHS, Inc.">
-            <img src="assets/lr-techs-logo-navbar.png" alt="LR TECHS, Inc." />
-          </a>
-
-          <nav class="desktop-nav" aria-label="Primary navigation">
-            <a href="#introduction">Introduction</a>
-            <a href="#commitment">Commitment</a>
-            <a href="#service">Service</a>
-            <a href="#vision">Vision</a>
-            <a href="#company">Company</a>
-            <a href="#recruit">Recruit</a>
-            <a href="#access">Access</a>
-            <a class="is-active" href="#development">Offshore Development</a>
-            <a href="#contact">Contact</a>
-          </nav>
-
-          <details class="mobile-nav">
-            <summary aria-label="Open menu">
-              <span class="menu-icon"></span>
-            </summary>
-            <nav class="mobile-nav__menu" aria-label="Mobile navigation">
-              <a href="#introduction">Introduction</a>
-              <a href="#commitment">Commitment</a>
-              <a href="#service">Service</a>
-              <a href="#vision">Vision</a>
-              <a href="#company">Company</a>
-              <a href="#recruit">Recruit</a>
-              <a href="#access">Access</a>
-              <a href="#development">Offshore Development</a>
-              <a href="#contact">Contact</a>
-            </nav>
-          </details>
-        </div>
-      </header>
+      <div data-shared-header></div>
 
       <main id="top">
         <section class="hero-wrap" id="development">
@@ -59,13 +25,13 @@
                 <div class="hero__logos" aria-label="Company brands">
                   <img
                     class="hero__logo--lr"
-                    src="assets/lr-techs-logo-and-name-white.png"
+                    src="assets/index/lr-techs-logo-and-name-white.png"
                     alt="LR TECHS, Inc."
                   />
                   <span class="hero__divider" aria-hidden="true"></span>
                   <img
                     class="hero__logo--z"
-                    src="assets/zengeneering-logo.png"
+                    src="assets/index/zengeneering-logo.png"
                     alt="ZENgineering Offshore Lab"
                   />
                 </div>
@@ -84,7 +50,7 @@
           </div>
           <img
             class="hero__accent"
-            src="assets/zen.png"
+            src="assets/index/zen.png"
             alt="Decorative accent graphic"
           />
         </section>
@@ -239,7 +205,7 @@
 
               <div class="submit-row">
                 <button type="submit">
-                  <img src="assets/mail-icon.png" alt="" aria-hidden="true" />
+                  <img src="assets/index/mail-icon.png" alt="" aria-hidden="true" />
                   <span>お問い合わせ</span>
                 </button>
               </div>
@@ -248,18 +214,10 @@
         </section>
       </main>
 
-      <footer class="site-footer">
-        <div class="site-footer__inner">
-          <div class="site-footer__band">
-            <div class="site-footer__brand">LR TECHS, Inc.</div>
-          </div>
-          <div class="site-footer__meta">
-            Copyright (c) LR TECHS, INC. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
+      <div data-shared-footer></div>
     </div>
 
+    <script src="shared/components.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

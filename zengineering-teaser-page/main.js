@@ -1,4 +1,5 @@
 const contactForm = document.querySelector(".contact-form");
+const confirmationStorageKey = "zengineering-contact-form";
 
 if (contactForm) {
   const emailField = contactForm.querySelector('input[name="email"]');
@@ -30,7 +31,7 @@ if (contactForm) {
     },
     {
       selector: 'input[name^="contactMethod."]',
-      message: "通信方法のご希望を1つ以上選択してください。",
+      message: "返信方法のご希望を1つ選択してください。",
     },
   ];
 
@@ -117,6 +118,37 @@ if (contactForm) {
 
     if (!contactForm.reportValidity()) {
       event.preventDefault();
+      return;
     }
+
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const submission = {
+      company: (formData.get("company") || "").toString().trim(),
+      name: (formData.get("name") || "").toString().trim(),
+      email: (formData.get("email") || "").toString().trim(),
+      "confirm-email": (formData.get("confirm-email") || "").toString().trim(),
+      message: (formData.get("message") || "").toString().trim(),
+      topics: {},
+      contactMethod: {},
+    };
+
+    Array.from(contactForm.querySelectorAll('input[name^="topics."]:checked')).forEach(
+      (checkbox) => {
+        const [, key] = checkbox.name.split(".");
+        submission.topics[key] = checkbox.value;
+      },
+    );
+
+    Array.from(
+      contactForm.querySelectorAll('input[name^="contactMethod."]:checked'),
+    ).forEach((checkbox) => {
+      const [, key] = checkbox.name.split(".");
+      submission.contactMethod[key] = checkbox.value;
+    });
+
+    sessionStorage.setItem(confirmationStorageKey, JSON.stringify(submission));
+    window.location.href = "confirm/";
   });
 }
