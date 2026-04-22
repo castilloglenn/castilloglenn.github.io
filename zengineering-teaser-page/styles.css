@@ -30,7 +30,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    font-family: "Raleway", sans-serif;
     color: var(--text);
     background: #ffffff;
 }
@@ -288,7 +288,7 @@ textarea {
 .hero__lead {
     margin: 0 0 38px;
     max-width: 980px;
-    font-family: "Raleway", "Noto Sans JP", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: clamp(1.35rem, 1.72vw, 1.5rem);
     line-height: 1.45;
     font-weight: 400;
@@ -318,6 +318,10 @@ textarea {
     transform: translateY(-2px);
 }
 
+.hero__cta-year {
+    font-family: "Montserrat", sans-serif;
+}
+
 .hero__accent {
     position: absolute;
     right: calc((100vw - min(calc(100vw - 56px), var(--content-width))) / 2 + 18px);
@@ -343,7 +347,7 @@ textarea {
 
 .contact__copy h2 {
     margin: 0 0 10px;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: clamp(2.25rem, 2.9vw, 2.5rem);
     line-height: 1.04;
     font-weight: 700;

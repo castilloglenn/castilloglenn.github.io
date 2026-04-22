@@ -1,3 +1,7 @@
+body {
+    font-family: "Raleway", sans-serif;
+}
+
 .success-stage {
     align-items: center;
     min-height: 100%;
@@ -43,7 +47,7 @@
 
 .success-card h1 {
     margin: 0 0 58px;
-    font-family: "Raleway", "Noto Sans JP", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 2.25rem;
     line-height: 1.2;
     font-weight: 700;
@@ -91,7 +95,7 @@
 
     .success-card h1 {
         margin-bottom: 18.75px;
-        font-family: "Raleway", "Noto Sans JP", sans-serif;
+        font-family: "Raleway", sans-serif;
         font-size: 2.25rem;
         line-height: 1.2;
         font-weight: 700;
@@ -128,7 +132,7 @@
 
     .success-card h1 {
         margin-bottom: 17.6025px;
-        font-family: "Raleway", "Noto Sans JP", sans-serif;
+        font-family: "Raleway", sans-serif;
         font-size: 1.5rem;
         line-height: 1.2;
         font-weight: 700;
