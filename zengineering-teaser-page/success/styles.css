@@ -59,6 +59,7 @@
     line-height: 1.9;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.94);
+    text-align: left;
 }
 
 @media (min-width: 981px) {

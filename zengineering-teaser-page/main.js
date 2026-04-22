@@ -9,13 +9,13 @@ if (contactForm) {
 
   const fieldMessages = {
     company: "会社名を入力してください。",
-    name: "名前を入力してください。",
+    name: "ご担当者名を入力してください。",
     email: {
       valueMissing: "メールアドレスを入力してください。",
       typeMismatch: "正しいメールアドレスの形式で入力してください。",
     },
     "confirm-email": {
-      valueMissing: "確認用のメールアドレスを入力してください。",
+      valueMissing: "メールアドレスを再入力してください。",
       typeMismatch: "正しいメールアドレスの形式で入力してください。",
     },
     message: "お問い合わせ内容を入力してください。",
