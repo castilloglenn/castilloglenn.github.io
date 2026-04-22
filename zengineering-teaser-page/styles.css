@@ -356,7 +356,7 @@ textarea {
     color: var(--primary);
     font-size: 1rem;
     line-height: 1.55;
-    font-weight: 700;
+    font-weight: 500;
     text-shadow: none;
 }
 
@@ -423,9 +423,9 @@ textarea {
     z-index: 1;
     transform: translateY(-50%);
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
-    color: #202020;
+    color: #808080;
     pointer-events: none;
     transition: top 160ms ease, transform 160ms ease, font-size 160ms ease, color 160ms ease, padding 160ms ease;
 }
@@ -440,7 +440,7 @@ textarea {
 
 .check-group__label {
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 500;
     color: #202020;
 }
 
@@ -461,7 +461,8 @@ textarea {
 
 .field input::placeholder,
 .field textarea::placeholder {
-    color: transparent;
+    color: #808080;
+    opacity: 1;
 }
 
 .field textarea {
@@ -477,7 +478,7 @@ textarea {
     transform: translateY(-50%);
     padding: 0 6px;
     font-size: 0.65rem;
-    color: var(--primary-deep);
+    color: #808080;
     background: var(--field-bg);
 }
 
@@ -501,7 +502,7 @@ textarea {
     gap: 10px;
     font-size: 0.84rem;
     line-height: 1.5;
-    font-weight: 600;
+    font-weight: 500;
     color: #202020;
     cursor: pointer;
 }
@@ -570,7 +571,7 @@ textarea {
     background: linear-gradient(180deg, #ffac24 0%, #ff9800 100%);
     color: #fff;
     font-size: 1.02rem;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
     cursor: pointer;
     box-shadow: var(--overlay-drop-shadow);
@@ -591,6 +592,7 @@ textarea {
 .submit-row button:hover,
 .submit-row button:focus-visible {
     transform: translateY(-1px);
+    font-weight: 700;
 }
 
 .site-footer {
