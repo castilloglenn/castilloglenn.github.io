@@ -209,7 +209,7 @@ textarea {
 .hero {
     position: relative;
     width: 100%;
-    background: linear-gradient(180deg, rgba(39, 157, 224, 0.18), rgba(53, 90, 212, 0.42));
+    background: linear-gradient(180deg, #2B9FDA, #4457C0);
     isolation: isolate;
 }
 
@@ -217,10 +217,8 @@ textarea {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        url("assets/index/hero-bg-overlay.png") center center / auto 100% no-repeat,
-        url("assets/index/hero-bg.jpeg") center center / auto 100% no-repeat;
-    opacity: 0.87;
+    background: url("assets/index/hero-bg.jpeg") center center / auto 100% no-repeat;
+    opacity: 0.5;
     z-index: -2;
 }
 
@@ -228,17 +226,14 @@ textarea {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(180deg, rgba(52, 188, 235, 0.12), rgba(58, 83, 211, 0.18)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(73, 81, 227, 0.2) 100%);
+    background: linear-gradient(180deg, #2B9FDA, #4457C0);
+    opacity: 0.87;
     z-index: -1;
 }
 
 @media (min-width: 768px) {
     .hero::before {
-        background:
-            url("assets/index/hero-bg-overlay.png") center center / cover no-repeat,
-            url("assets/index/hero-bg.jpeg") center center / cover no-repeat;
+        background: url("assets/index/hero-bg.jpeg") center center / cover no-repeat;
     }
 }
 
