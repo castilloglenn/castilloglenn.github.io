@@ -1,2 +1,9 @@
 .DS_Store
 .vscode/settings.json
+
+# Claude Code / AI context — private, never publish
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.mcp.json
+
