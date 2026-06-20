@@ -1,0 +1,360 @@
+/* Cinematic vertical story — mobile-first.
+   Tailwind handles layout/spacing/type; this file holds the full-screen
+   scroll-snap mechanics, Ken-Burns zooms, and romantic animations. */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: "Quicksand", system-ui, sans-serif;
+  color: #fff;
+  background: #1c1016;
+}
+
+/* ---------- scroll container: one full-screen slide at a time ---------- */
+.story {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.story::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- the photo (or placeholder) ---------- */
+.photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+}
+/* Ken-Burns only fires once the slide is the active one */
+.slide.active .photo.kb1 {
+  animation: kb1 9s ease-out forwards;
+}
+.slide.active .photo.kb2 {
+  animation: kb2 9s ease-out forwards;
+}
+.slide.active .photo.kb3 {
+  animation: kb3 9s ease-out forwards;
+}
+.slide.active .photo.kb4 {
+  animation: kb4 9s ease-out forwards;
+}
+@keyframes kb1 {
+  from { transform: scale(1.04) translate(0, 0); }
+  to   { transform: scale(1.18) translate(-2%, -2%); }
+}
+@keyframes kb2 {
+  from { transform: scale(1.18) translate(2%, 2%); }
+  to   { transform: scale(1.04) translate(0, 0); }
+}
+@keyframes kb3 {
+  from { transform: scale(1.06) translate(2%, -1%); }
+  to   { transform: scale(1.2) translate(-2%, 1%); }
+}
+@keyframes kb4 {
+  from { transform: scale(1.2) translate(-2%, 0); }
+  to   { transform: scale(1.06) translate(1%, 2%); }
+}
+
+/* lazy photos start hidden and crossfade in once loaded */
+.photo.lazy {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.slide.loaded .photo.lazy {
+  opacity: 1;
+}
+
+/* ---------- loading skeleton (shimmer + pulsing heart) ---------- */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, #f8b5cd, #e7799f);
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+.slide.loaded .skeleton {
+  opacity: 0;
+}
+/* a soft light sweep travelling across the block */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: shimmer-sweep 1.5s ease-in-out infinite;
+}
+.skeleton span {
+  font-size: 2.4rem;
+  animation: heart-pulse 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+@keyframes shimmer-sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* placeholder look until real photos are dropped in */
+.photo.is-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+.photo.ph1 { background: linear-gradient(160deg, #f8b5cd, #e7799f); }
+.photo.ph2 { background: linear-gradient(160deg, #f6a5c0, #c86b9b); }
+.photo.ph3 { background: linear-gradient(160deg, #ffc2d6, #e58bb3); }
+.photo.ph4 { background: linear-gradient(160deg, #f4a9c4, #b76a96); }
+.photo.is-placeholder svg {
+  width: 3.25rem;
+  height: 3.25rem;
+  opacity: 0.9;
+}
+
+/* bottom scrim so captions stay readable over any photo */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(28, 16, 22, 0.82) 0%,
+    rgba(28, 16, 22, 0.35) 28%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* ---------- caption ---------- */
+.caption {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  width: 100%;
+  padding: 0 1.6rem 3.2rem;
+  text-align: left;
+}
+.caption .date {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.6rem;
+  color: #ffd2e3;
+}
+.caption .text {
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+/* drift in once active */
+.slide.active .caption .date {
+  animation: drift 0.9s ease forwards 0.25s;
+  opacity: 0;
+}
+.slide.active .caption .text {
+  animation: drift 0.9s ease forwards 0.45s;
+  opacity: 0;
+}
+@keyframes drift {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- intro & outro slides ---------- */
+.slide.intro,
+.slide.outro {
+  background:
+    radial-gradient(120% 80% at 50% -10%, #ffe3ee 0%, transparent 55%),
+    linear-gradient(180deg, #fff6f2 0%, #fde9ef 100%);
+  color: #6b4f5b;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+}
+
+.love-phrase {
+  font-weight: 700;
+  background: linear-gradient(100deg, #f6a5c0, #e7799f 25%, #ff6fae 50%, #e7799f 75%, #f6a5c0);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation:
+    love-shimmer 4s linear infinite,
+    love-pulse 2.6s ease-in-out infinite;
+}
+@keyframes love-shimmer {
+  to { background-position: -220% center; }
+}
+@keyframes love-pulse {
+  0%, 100% { filter: drop-shadow(0 1px 6px rgba(231, 121, 159, 0.25)); }
+  50%      { filter: drop-shadow(0 1px 12px rgba(255, 111, 174, 0.55)); }
+}
+
+/* ---------- replay button (outro) ---------- */
+.replay {
+  margin-top: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f6a5c0, #e7799f);
+  box-shadow: 0 10px 22px -8px rgba(231, 121, 159, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.replay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -8px rgba(231, 121, 159, 0.8);
+}
+.replay:active {
+  transform: translateY(0);
+}
+.replay svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* ---------- swipe-up hint ---------- */
+.hint {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #9a7d88;
+  font-size: 0.9rem;
+  transition: opacity 0.5s ease;
+}
+.hint svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.3rem auto 0;
+  display: block;
+  animation: bob 1.8s ease-in-out infinite;
+}
+.story.scrolled .hint {
+  opacity: 0;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ---------- progress bars (story style) ---------- */
+.bars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  gap: 4px;
+  padding: 0.7rem 0.8rem calc(0.7rem + env(safe-area-inset-top, 0px));
+  padding-top: calc(0.7rem + env(safe-area-inset-top, 0px));
+}
+.bars i {
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: background 0.4s ease;
+}
+.bars i.on {
+  background: #ff8ab8;
+}
+
+/* ---------- floating hearts overlay ---------- */
+.hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hearts span {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation: float-up linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 0; }
+  12%  { opacity: 0.55; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-110svh) scale(1.05) rotate(28deg); opacity: 0; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .photo,
+  .caption .date,
+  .caption .text,
+  .hint svg,
+  .love-phrase,
+  .skeleton::after,
+  .skeleton span,
+  .hearts span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .story {
+    scroll-behavior: auto;
+  }
+}
