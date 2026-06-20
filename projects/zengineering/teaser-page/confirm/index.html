@@ -62,23 +62,18 @@
               </div>
             </section>
 
-            <form
-              class="confirm-submit-form"
-              action="https://submit-form.com/W8t2kRdpJ"
-              method="post"
-            >
-              <input type="hidden" name="_redirect" value="" />
-              <input type="hidden" name="_error" value="" />
-              <input type="hidden" name="_append" value="false" />
+            <div class="confirm-submit-form">
               <div class="confirm-submit-form__fields" data-confirm-hidden-fields></div>
 
               <div class="confirm-actions">
-                <button class="utility-button utility-button--icon" type="submit">
+                <button id="confirm-send" class="utility-button utility-button--icon" type="button">
                   <img src="../assets/shared/check-icon-confirm.svg" alt="" aria-hidden="true" />
                   <span>確認・送信</span>
                 </button>
               </div>
-            </form>
+
+              <p class="confirm-disabled-note">※送信機能は無効化されています。外部への自動送信は行われません。</p>
+            </div>
           </div>
         </section>
       </main>
